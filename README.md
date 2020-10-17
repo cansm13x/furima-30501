@@ -11,37 +11,33 @@
 | last_name_full    | string     | null: false               |
 | first_name_kana   | string     | null: false               |
 | last_name_kana    | string     | null: false               |
-| birth_year        | date       | null: false               |
-| birth_month       | date       | null: false               |
-| birth_day         | date       | null: false               |
-| order             | references | foreign_key: true         |
+| birthday          | date       | null: false               |
 
 ### Association
 
 - has_many :items
-- has_many :orders
 - has_many :order_users
 
 
 
 ## items table
 
-| Column           | Type       | Option            |
-|------------------|------------|-------------------|
-| item             | string     | null: false       |
-| description      | text       | null: false       |
-| category         | string     | null: false       |
-| status           | string     | null: false       |
-| delivery         | string     | null: false       |
-| area             | string     | null: false       |
-| day              | string     | null: false       |
-| price            | string     | null: false       |
-| user             | references | foreign_key: true |
+| Column           | Type        | Option            |
+|------------------|-------------|-------------------|
+| item             | string      | null: false       |
+| description      | text        | null: false       |
+| category         | integer     | null: false       |
+| status           | integer     | null: false       |
+| delivery         | integer     | null: false       |
+| area             | integer     | null: false       |
+| day              | integer     | null: false       |
+| price            | string      | null: false       |
+| user             | references  | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :order_users
+- has_one :order_user
 
 
 
@@ -55,23 +51,23 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :order_users
+- belongs_to :item
+- has_one :order
 
 
 
 ## orders table
 
-| Column          | Type       | Options           |
-|-----------------|------------|-------------------|
-| postal_code     | string     | null: false       |
-| prefecture      | string     | null: false       |
-| municipality    | string     | null: false       |
-| address         | string     | null: false       |
-| building_name   | string     | null: false       |
-| tell            | string     | null: false       |
-| item            | references | foreign_key: true |
+| Column          | Type        | Options           |
+|-----------------|-------------|-------------------|
+| postal_code     | integer     | null: false       |
+| prefecture      | integer     | null: false       |
+| municipality    | string      | null: false       |
+| address         | string      | null: false       |
+| building_name   | string      |                   |
+| tell            | string      | null: false       |
+| order_user      | references  | foreign_key: true |
 
 ### Association
 
-- belongs_to :item
-
+- belongs_to :order_user
