@@ -22,17 +22,17 @@
 
 ## items table
 
-| Column           | Type        | Option            |
-|------------------|-------------|-------------------|
-| item             | string      | null: false       |
-| description      | text        | null: false       |
-| category         | integer     | null: false       |
-| status           | integer     | null: false       |
-| delivery         | integer     | null: false       |
-| area             | integer     | null: false       |
-| day              | integer     | null: false       |
-| price            | string      | null: false       |
-| user             | references  | foreign_key: true |
+| Column              | Type        | Option            |
+|---------------------|-------------|-------------------|
+| item                | string      | null: false       |
+| description         | text        | null: false       |
+| category_id         | integer     | null: false       |
+| status_id           | integer     | null: false       |
+| delivery_id         | integer     | null: false       |
+| area_id             | integer     | null: false       |
+| day_id              | integer     | null: false       |
+| price               | string      | null: false       |
+| user                | references  | foreign_key: true |
 
 ### Association
 
