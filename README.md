@@ -58,15 +58,15 @@
 
 ## orders table
 
-| Column          | Type        | Options           |
-|-----------------|-------------|-------------------|
-| postal_code     | integer     | null: false       |
-| prefecture      | integer     | null: false       |
-| municipality    | string      | null: false       |
-| address         | string      | null: false       |
-| building_name   | string      |                   |
-| tell            | string      | null: false       |
-| order_user      | references  | foreign_key: true |
+| Column             | Type        | Options           |
+|--------------------|-------------|-------------------|
+| postal_code_id     | integer     | null: false       |
+| prefecture_id      | integer     | null: false       |
+| municipality       | string      | null: false       |
+| address            | string      | null: false       |
+| building_name      | string      |                   |
+| tell               | string      | null: false       |
+| order_user         | references  | foreign_key: true |
 
 ### Association
 
