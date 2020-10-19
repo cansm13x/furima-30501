@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :nickname
     validates :password,length: { minimum: 6 }
     validates :birth_date
-
+      
     with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } do
       validates :last_name
       validates :first_name
@@ -18,4 +18,5 @@ class User < ApplicationRecord
 
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX
+  end
 end
