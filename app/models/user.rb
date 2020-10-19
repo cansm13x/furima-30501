@@ -6,17 +6,13 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :password, presence: true, length: { minimum: 6 }
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name_kana, presence: true
   validates :birth_date, presence: true
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } do
-    validates :first_name
-    validates :last_name
-    validates :first_name_kana
-    validates :last_name_kana
+    validates :last_name, presence: true
+    validates :first_name, presence: true
+    validates :last_name_kana, presence: true
+    validates :first_name_kana, presence: true
   end
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
