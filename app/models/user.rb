@@ -4,11 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+
   with_options presence: true do
     validates :nickname
-    validates :password,length: { minimum: 6 }
+    validates :password, length: { minimum: 6 }
     validates :birth_date
-      
+
     with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } do
       validates :last_name
       validates :first_name
