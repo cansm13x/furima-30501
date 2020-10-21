@@ -6,6 +6,5 @@ window.addEventListener('load', () =>{
     addTaxDom.innerHTML = Math.floor(inputValue * 0.1);
     const priceProfit = document.getElementById("profit");
     priceProfit.innerHTML = Math.floor(inputValue * 0.9);
-    console.log(inputValue);
   })
 })
