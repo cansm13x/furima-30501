@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :item do
-    name          { "写真" }
-    description   { "富士山の写真" }
-    category_id   { category_id = "2" }
-    status_id     { status_id = "2"}
-    delivery_id   { delivery_id = "2" }
-    area_id       { area_id = "2" }
-    day_id        { day_id = "2" }
+    name          { '写真' }
+    description   { '富士山の写真' }
+    category_id   { category_id = '2' }
+    status_id     { status_id = '2' }
+    delivery_id   { delivery_id = '2' }
+    area_id       { area_id = '2' }
+    day_id        { day_id = '2' }
     price         { 1000 }
     association   :user
 

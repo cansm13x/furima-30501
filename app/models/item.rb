@@ -15,10 +15,10 @@ class Item < ApplicationRecord
 
   # validates :price, numericality: {greather_than_or_equal_to: 300 }
   # validates :price, numericality: {less_than_or_equal_to: 9999999}
-  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
 
   # PRICE_REGEX = /\A(?=.*?[\d])\z/i.freeze
