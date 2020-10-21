@@ -1,7 +1,8 @@
 window.addEventListener('load', () =>{
   const priceInput = document.getElementById("price");
   priceInput.addEventListener("input", () => {
-    console.log("イベント発火");
+    const inputValue = priceInput.value;
+    console.log(inputValue);
   })
   const priceTax = document.getElementById("add-tax-price");
   priceTax.addEventListener("input", () => {
