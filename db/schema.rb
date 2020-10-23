@@ -48,28 +48,6 @@ ActiveRecord::Schema.define(version: 2020_10_19_123844) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "order_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_order_users_on_item_id"
-    t.index ["user_id"], name: "index_order_users_on_user_id"
-  end
-
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "postal_code", null: false
-    t.integer "prefecture_id", null: false
-    t.string "municipality", null: false
-    t.string "addres", null: false
-    t.string "building_name"
-    t.string "tell", null: false
-    t.bigint "order_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_user_id"], name: "index_orders_on_order_user_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", null: false
@@ -90,6 +68,4 @@ ActiveRecord::Schema.define(version: 2020_10_19_123844) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
-  add_foreign_key "order_users", "items"
-  add_foreign_key "order_users", "users"
 end
