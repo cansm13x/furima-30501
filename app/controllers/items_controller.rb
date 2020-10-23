@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :redirect_root, only: [:edit]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -44,5 +45,9 @@ class ItemsController < ApplicationController
 
   def set_item
      @item = Item.find(params[:id])
+  end
+
+  def redirect_root
+    redirect_to root_path unless user_signed_in?
   end
 end
