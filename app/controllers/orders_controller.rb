@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    @item = Item.find(params[:item_id])
     @user_buy = UserBuy.new
   end
 
@@ -18,4 +19,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:user_buy).permit(:postal_code, :prefecture_id, :municipality, :addres, :building_name, :tell, :order_user_id)
   end
+
 end
