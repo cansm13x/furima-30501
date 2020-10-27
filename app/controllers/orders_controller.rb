@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.find(params[:item_id])
     @user_buy = UserBuy.new(order_params)
     if @user_buy.valid?
