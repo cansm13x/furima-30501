@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @user_buy = UserBuy.new
     redirect_to root_path if (current_user.id == @item[:user_id]) || OrderUser.exists?(@item[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @user_buy = UserBuy.new(order_params)
     if @user_buy.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']
@@ -28,5 +27,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:user_buy).permit(:postal_code, :prefecture_id, :municipality, :addres, :building_name, :tell, :order_user_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
