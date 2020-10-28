@@ -7,8 +7,8 @@ class UserBuy
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :prefecture_id
-    validates :municipality, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :addres, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+    validates :municipality
+    validates :addres
     validates :tell, format: { with: /\A\d{11}\z/ }
     validates :token
   end
