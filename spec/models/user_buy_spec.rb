@@ -56,11 +56,17 @@ RSpec.describe UserBuy, type: :model do
       @user_buy.valid?
       expect(@user_buy.errors.full_messages).to include("Tell is invalid")
     end
-    
+
     it 'tellはハイフンなしの数字11桁以内でないと保存できない' do
       @user_buy.tell = 990123456789
       @user_buy.valid?
       expect(@user_buy.errors.full_messages).to include("Tell is invalid")
+    end
+
+    it "tokenが空では登録できないこと" do
+      @user_buy.token = nil
+      @user_buy.valid?
+      expect(@user_buy.errors.full_messages).to include("Token can't be blank")
     end
   end
 end

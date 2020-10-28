@@ -10,6 +10,7 @@ class UserBuy
     validates :municipality, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
     validates :addres, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
     validates :tell, format: { with: /\A\d{11}\z/ } 
+    validates :token
   end
 
   validates :prefecture_id, numericality: { other_than: 0 }
