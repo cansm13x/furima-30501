@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @user_buy = UserBuy.new(order_params)
     if @user_buy.valid?
-      Payjp.api_key = "sk_test_82b63b2bef8f4396fc6d6b43"
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create( 
         amount: @item[:price],
         card: order_params[:token],
