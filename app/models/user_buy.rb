@@ -1,6 +1,6 @@
 class UserBuy
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :municipality, 
+  attr_accessor :postal_code, :prefecture_id, :municipality,
                 :addres, :building_name, :tell, :order_user_id,
                 :user_id, :item_id, :token
 
@@ -9,7 +9,7 @@ class UserBuy
     validates :prefecture_id
     validates :municipality, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
     validates :addres, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :tell, format: { with: /\A\d{11}\z/ } 
+    validates :tell, format: { with: /\A\d{11}\z/ }
     validates :token
   end
 

@@ -11,15 +11,15 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @user_buy = UserBuy.new(order_params)
     if @user_buy.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create( 
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+      Payjp::Charge.create(
         amount: @item[:price],
         card: order_params[:token],
         currency: 'jpy'
       )
       @user_buy.save
       redirect_to root_path
-    else 
+    else
       render action: :index
     end
   end
