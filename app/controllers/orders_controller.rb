@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :redirect_root, only: [:index, :create]
 
   def index
     @item = Item.find(params[:item_id])
     @user_buy = UserBuy.new
+    redirect_to root_path if (current_user.id == @item[:user_id]) || OrderUser.exists?
   end
 
   def create
@@ -28,9 +28,5 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:user_buy).permit(:postal_code, :prefecture_id, :municipality, :addres, :building_name, :tell, :order_user_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
-  end
-
-  def redirect_root
-    redirect_to root_path unless current_user == @item.user
   end
 end
