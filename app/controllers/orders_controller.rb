@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @user_buy = UserBuy.new
-    redirect_to root_path if (current_user.id == @item[:user_id]) || OrderUser.exists?(@item[:item_id])
+    redirect_to root_path if current_user.id == @item[:user_id] || OrderUser.exists?(item_id: @item.id)
   end
 
   def create
